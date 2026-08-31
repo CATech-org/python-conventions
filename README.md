@@ -1,5 +1,8 @@
 # python-conventions
 
+**Purpose.** The binding conventions for Python in this project's backend — FastAPI over async
+SQLAlchemy 2.0 over MSSQL, on a router → service → repository layer split.
+
 **Read this before writing any code.** These files say *how* the code must be written. A rule
 here is not a preference. Code that breaks one is wrong even if it runs and even if the
 acceptance check passes.
