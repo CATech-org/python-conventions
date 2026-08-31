@@ -16,14 +16,14 @@ async def get_db() -> AsyncGenerator[AsyncSession]:
 
 
 # repository layer
-async def get_foo_repository(
+def get_foo_repository(
     session: AsyncSession = Depends(get_db),  # noqa: B008
 ) -> FooRepository:
     return FooRepository(session)
 
 
 # service layer
-async def get_bar_service(
+def get_bar_service(
     foos: FooRepository = Depends(get_foo_repository),  # noqa: B008
     bazs: BazRepository = Depends(get_baz_repository),  # noqa: B008
 ) -> BarService:
