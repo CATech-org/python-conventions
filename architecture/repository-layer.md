@@ -118,17 +118,7 @@ the agent without any human approving it. That breaks a design invariant.
 Status changes happen only through named, intent-revealing methods — `set_status()`,
 `approve_and_supersede()` — which the approval service calls after running its checks.
 
-## 4.5 Approval-gated reads
-
-Repositories expose reads by approval state, by name:
-
-- `list_approved(...)` — anything on the agent path.
-- `list_proposed(...)` — the approval API only.
-
-**Never write `list_all()`** or any other unfiltered listing method. Its absence is what makes the
-rule "the agent cannot read its own proposals" greppable.
-
-## 4.6 A repository touches only its own module's models
+## 4.5 A repository touches only its own module's models
 
 A repository imports, queries, and writes **only the models defined in its own
 `src/modules/<module>/models.py`**. It may own more than one model when they belong to the same
