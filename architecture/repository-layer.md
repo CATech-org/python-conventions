@@ -128,12 +128,12 @@ billing models. It must never `from src.modules.<other>.models import ...`.
 This is a module-boundary rule, not a style preference. A repository that reaches into another
 module's tables couples two domains at the layer that is meant to be the smallest, most
 substitutable unit, and it hides that coupling from the dependency chain in §3
-(`FastAPI/dependency-chain.md`). It is wrong even if the query is correct and the test passes.
+(`fastapi/dependency-chain.md`). It is wrong even if the query is correct and the test passes.
 
 - **A write that needs a value from another module takes it as an argument.** The caller passes
   it in; the repository does not go and fetch it.
 - **A read that needs another module's data goes through that module's repository**, injected
-  into the service with `Depends` (§3, `FastAPI/dependency-chain.md`) like any other collaborator
+  into the service with `Depends` (§3, `fastapi/dependency-chain.md`) like any other collaborator
   — not by importing the model and writing a `select()`.
 - **A model written by one module and only read by another belongs to the writer.** Move the
   model and its repository into the module that maintains its invariants; the reading module
